@@ -1,16 +1,15 @@
 import React from "react"
+import StoreRegisterForm from "../../components/storeRegister"
 import Logo from "../../components/common/logo"
-import LoginForm from "../../components/login"
-import * as S from "./style"
 import { Container } from "react-bootstrap"
 
-function LoginPage() {
+function StorePage() {
   return (
     <Container>
-      <Logo size={100} />
-      <LoginForm />
+      <Logo size={80} />
+      <StoreRegisterForm />
     </Container>
   )
 }
 
-export default LoginPage
+export default StorePage

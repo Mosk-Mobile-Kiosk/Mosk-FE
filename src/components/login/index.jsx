@@ -1,36 +1,34 @@
-import React, { useState, useEffect } from "react"
-import * as S from "./style"
+import React from "react"
+import { Box, Button, Container, FormControlLabel, TextField, Typography } from "@mui/material"
+// import { CheckBox } from "@mui/icons-material"
 import { Link } from "react-router-dom"
 
 function LoginForm() {
-  const [showLoginForm, setShowLoginForm] = useState(false)
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setShowLoginForm(true)
-    }, 2000)
-    return () => {
-      clearTimeout(timeoutId)
-    }
-  }, [])
-
   return (
-    <>
-      <S.LoginPageContainer>{!showLoginForm && <S.Logo src="/img/1.png" alt="logo" />}</S.LoginPageContainer>
-      {showLoginForm && (
-        <S.LoginPageContainer>
-          <S.Logo src="/img/1.png" alt="logo" />
-          <S.LoginFormContainer>
-            <S.Input type="text" placeholder="아이디" />
-            <S.Input type="password" placeholder="비밀번호" />
-            <S.SubmitButton>로그인</S.SubmitButton>
-          </S.LoginFormContainer>
-          <S.SignUpText>
-            회원이 아니신가요? <S.SignUpLink to="/register">회원가입</S.SignUpLink>
-          </S.SignUpText>
-        </S.LoginPageContainer>
-      )}
-    </>
+    <Container component="main" maxWidth="sm">
+      <Box sx={{ marginTop: 8, display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Typography component="h1" variant="h5">
+          Login
+        </Typography>
+        <TextField name="email" label="이메일" required fullWidth autoComplete="email" margin="normal" autoFocus />
+        <TextField
+          name="password"
+          label="비밀번호"
+          type="password"
+          required
+          fullWidth
+          autoComplete="current-password"
+          margin="normal"
+        />
+        {/* <FormControlLabel control={<CheckBox value="remember" color="primary" />} label="Remember me" /> */}
+        <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} style={{ height: "50px" }}>
+          login
+        </Button>
+        <span>
+          아직 회원이 아니신가요?<Link to="/register">회원가입</Link>
+        </span>
+      </Box>
+    </Container>
   )
 }
 
