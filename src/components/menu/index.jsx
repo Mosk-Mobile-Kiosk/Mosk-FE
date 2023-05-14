@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react"
+// Menu.jsx
+import React from "react"
 import Product from "../product"
-import { MenuWrapper } from "./style"
-import one from "../../data/one"
+import * as S from "./style"
 
-function Menu() {
-  const [menus, setMenu] = useState(one)
-  console.log(menus)
+function Menu({ items, selectedCategory }) {
+  const filteredItems = items.find((category) => category.id === selectedCategory)
+
+  if (!filteredItems) {
+    return <div>상품이 없습니다.</div>
+  }
 
   return (
-    <MenuWrapper>
-      {menus.map((menu, id) => (
-        <Product key={id} name={menu.name} description={menu.description} price={menu.price} />
+    <S.MenuWrapper>
+      {filteredItems.items.map((item) => (
+        <Product key={item.id} name={item.name} price={item.price} description={item.description} />
       ))}
-    </MenuWrapper>
+    </S.MenuWrapper>
   )
 }
 
