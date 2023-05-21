@@ -1,10 +1,11 @@
 import { styled } from "styled-components"
 
 export const CartWrapper = styled.div`
-  position: relative;
+  /* position: relative; */
   text-align: right;
+  padding-top: 15px;
   /* padding-bottom: 130px; */
-  bottom: 60px;
+  /* bottom: 60px; */
   /* right: 10px; */
   /* border: 1px solid black; */
 `
@@ -21,7 +22,49 @@ export const CartCount = styled.span`
   margin-right: 20px;
 `
 
+export const CartModalProduct = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  max-height: 70vh;
+  width: 100%;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #000;
+  display: flex;
+  flex-direction: column;
+`
+
+export const CartModalTitle = styled.h1`
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  background-color: #ccc;
+`
+
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `
+
+export const ProductImg = styled.img`
+  width: ${({ size }) => size}px;
+  margin: 0 20px;
+  /* display: flex; */
+  /* align-self: flex-end; */
+`
+export const TotalPrice = styled.div`
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  /* padding-top: 10px; */
+  font-size: 22px;
+  /* background-color: #ddd; */
+  padding: 15px;
+  position: sticky;
+  bottom: 0;
+  background-color: #e8e9eb;
+`
+
+// export const CartTitle = styled.div`
+
+// `

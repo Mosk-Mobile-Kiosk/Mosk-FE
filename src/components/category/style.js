@@ -5,5 +5,7 @@ export const CategoryWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* max-width: 425px; */
+  /* overflow: auto; */
+  /* width: vw; */
+  /* max-wi%h: 425px; */
 `

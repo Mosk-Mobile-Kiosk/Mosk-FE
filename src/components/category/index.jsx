@@ -1,5 +1,6 @@
 import React from "react"
 import { Button } from "@material-ui/core"
+import "reset-css"
 import * as S from "./style"
 
 function Category({ items, selectedCategory, onChange }) {
@@ -9,9 +10,11 @@ function Category({ items, selectedCategory, onChange }) {
         <Button
           key={category.id}
           style={{
-            // border: "1px outset black ",
-            margin: "5px",
-            marginTop: "50px",
+            fontSize: "15px",
+            fontWeight: "bold",
+            whiteSpace: "nowrap",
+            backgroundColor: category.id === selectedCategory ? "#a399a1" : "transparent",
+            color: category.id === selectedCategory ? "#fff" : "#000",
           }}
           onClick={() => onChange(category.id)}
         >

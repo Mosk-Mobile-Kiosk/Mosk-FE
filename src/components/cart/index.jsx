@@ -1,10 +1,11 @@
-// Cart.jsx
 import React, { useState } from "react"
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined"
 import { Modal, Button, Slide } from "@material-ui/core"
 import * as S from "./style"
+import { useNavigate } from "react-router-dom"
 
 function Cart({ cartItems }) {
+  const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
 
   const handleCartClick = () => {
@@ -15,7 +16,6 @@ function Cart({ cartItems }) {
     setModalOpen(false)
   }
 
-  // 아이템 개수 계산
   const itemCounts = cartItems.reduce((counts, item) => {
     const itemKey = `${item.name}-${item.options.join("-")}`
     if (counts[itemKey]) {
@@ -26,7 +26,6 @@ function Cart({ cartItems }) {
     return counts
   }, {})
 
-  // 총 가격 계산
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0)
 
   return (
@@ -42,26 +41,13 @@ function Cart({ cartItems }) {
         closeAfterTransition
         style={{
           display: "flex",
-          alignItems: "flex-start", // Align content to the top
+          alignItems: "flex-end",
           justifyContent: "center",
         }}
       >
-        <Slide direction="down" in={modalOpen} mountOnEnter unmountOnExit>
-          <div
-            style={{
-              backgroundColor: "white",
-              padding: "20px",
-              borderRadius: "10px",
-              // maxHeight: "70vh",
-              width: "100%",
-              borderTop: "1px solid",
-              borderBottom: "1px solid",
-              borderColor: S.CartWrapper.borderColor,
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <h2 style={{ paddingBottom: "10px", fontSize: "20px", textAlign: "center" }}>장바구니</h2>
+        <Slide direction="up" in={modalOpen} mountOnEnter unmountOnExit>
+          <S.CartModalProduct>
+            <S.CartModalTitle>장바구니</S.CartModalTitle>
             {cartItems.length > 0 ? (
               <div style={{ flex: 1, overflowY: "auto" }}>
                 {Object.entries(itemCounts).map(([itemKey, itemCount]) => {
@@ -70,30 +56,49 @@ function Cart({ cartItems }) {
                     (item) => item.name === itemName && item.options.join("-") === itemOptions.join("-"),
                   )
                   return (
-                    <div key={itemKey} style={{ marginBottom: "10px" }}>
-                      <h3>{item.name}</h3>
-                      {itemOptions.length > 0 && <p>-옵션: {itemOptions.join(", ")}</p>}
-                      <p>-가격: {item.price}원</p>
-                      <p>-개수: {itemCount}</p>
+                    <div
+                      key={itemKey}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        borderBottom: "1px dotted black",
+                        padding: "10px 0",
+                      }}
+                    >
+                      <S.ProductImg src="/img/logo.png" size={30} />
+                      <div style={{ textAlign: "end", margin: "0 20px" }}>
+                        <h3 style={{ fontWeight: "bold" }}>{item.name}</h3>
+                        {itemOptions.length > 0 && <p>-옵션: {itemOptions.join(", ")}</p>}
+                        <p>-가격: {item.price}원</p>
+                        <p>-개수: {itemCount}</p>
+                      </div>
                     </div>
                   )
                 })}
-                <p style={{ textAlign: "center", paddingTop: "10px" }}>총 가격: {totalPrice}원</p>
+                <S.TotalPrice>총 가격: {totalPrice}원</S.TotalPrice>
               </div>
             ) : (
               <p>장바구니가 비어 있습니다.</p>
             )}
             <S.ButtonWrapper>
-              <Button onClick={handleCloseModal}>닫기</Button>
               <Button
+                style={{ width: "50%", backgroundColor: "#f089d1" }}
+                variant="outlined"
+                onClick={handleCloseModal}
+              >
+                닫기
+              </Button>
+              <Button
+                style={{ width: "50%", backgroundColor: "#74bee8" }}
+                variant="outlined"
                 onClick={() => {
-                  alert("aa")
+                  navigate("/pay")
                 }}
               >
                 결제하기
               </Button>
             </S.ButtonWrapper>
-          </div>
+          </S.CartModalProduct>
         </Slide>
       </Modal>
     </>

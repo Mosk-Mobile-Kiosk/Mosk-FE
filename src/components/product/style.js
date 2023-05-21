@@ -14,8 +14,8 @@ export const ProductWrapper = styled.div`
 
 export const ProductImg = styled.img`
   width: ${({ size }) => size}px;
-  display: flex;
-  align-self: flex-end;
+  /* display: flex; */
+  /* align-self: flex-end; */
 `
 
 export const ProductName = styled.h1`
@@ -25,7 +25,9 @@ export const ProductName = styled.h1`
   /* right: 125px; */
   /* top: 6px; */
   font-size: 20px;
-  /* text-align: start; */
+  /* justify-self: flex-end;
+  align-items: flex-end; */
+  text-align: end;
   /* padding-left: 120px; */
 `
 export const ProductPrice = styled.h3`
@@ -77,4 +79,36 @@ export const ModalWrapper = styled.div`
 export const ModalButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+`
+
+export const Total = styled.div`
+  border-top: 1px dotted black;
+  border-bottom: 1px dotted black;
+  text-align: center;
+  /* padding-top: 10px; */
+  margin: 10px 0;
+  /* padding: 10px 0; */
+`
+
+export const TotalPrice = styled.h1`
+  color: black;
+  padding: 10px 0;
+  font-size: 20px;
+  font: bold;
+`
+export const OptionTitle = styled.h1`
+  font: bold;
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+`
+export const OptionGroup = styled.div`
+  border-top: 1px dotted black;
+  /* border-bottom: 1px dotted black; */
+`
+export const OptionGroupName = styled.h1`
+  font-size: 20px;
+  margin: 10px 0;
+  /* padding: 20px 0; */
 `
