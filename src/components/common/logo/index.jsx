@@ -1,6 +1,5 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import * as S from "./style"
-import { Container } from "react-bootstrap"
 
 function Logo({ size }) {
   return (
