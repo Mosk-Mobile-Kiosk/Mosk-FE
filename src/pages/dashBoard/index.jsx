@@ -13,13 +13,11 @@ function DashPage() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className="App" style={{ display: "flex" }}>
+        <div style={{ display: "flex" }}>
           <Sidebar />
 
-          <main className="content">
-            <Topbar />
-            <Outlet />
-          </main>
+          <Topbar />
+          <Outlet />
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>

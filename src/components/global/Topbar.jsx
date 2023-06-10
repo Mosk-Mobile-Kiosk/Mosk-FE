@@ -18,17 +18,16 @@ const Topbar = () => {
   const colorMode = useContext(ColorModeContext)
 
   return (
-    <Container>
-      <Box justifyContent="flex-end" p={2}>
-        {/* SEARCH BAR */}
-        <Box backgroundColor={colors.primary[400]} borderRadius="3px">
-          <InputBase sx={{ ml: 2, flex: 1 }} placeholder="search" />
-          <IconButton type="button" sx={{ p: 1 }}>
-            <SearchIcon />
-          </IconButton>
-        </Box>
+    // <Container>
+    <Box display="flex" justifyContent="space-between" p={2}>
+      <Box backgroundColor={colors.primary[400]} borderRadius="3px">
+        {/* <InputBase sx={{ ml: 2, flex: 1 }} placeholder="search" />
+        <IconButton type="button" sx={{ p: 1 }}>
+          <SearchIcon />
+        </IconButton> */}
+      </Box>
 
-        {/* ICONS */}
+      <div>
         <Box>
           <IconButton onClick={colorMode.toggleColorMode}>
             {theme.palette.mode === "dark" ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
@@ -43,8 +42,9 @@ const Topbar = () => {
             <PersonOutlinedIcon />
           </IconButton>
         </Box>
-      </Box>
-    </Container>
+      </div>
+    </Box>
+    // </Container>
   )
 }
 
